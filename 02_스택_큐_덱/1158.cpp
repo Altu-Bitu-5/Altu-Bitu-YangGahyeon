@@ -1,40 +1,47 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <queue>
 
 using namespace std;
 
-//¿ä¼¼Çª½º ¼ø¿­
-int main() {
-    int N, K; //N¸íÀÇ »ç¶÷, ¾çÀÇ Á¤¼ö K¹øÂ° »ç¶÷
-    cin >> N >> K; 
+string josephus(int N, int K){
+     queue<int> q;
+     string result; //ê²°ê³¼ ê°’ ì €ì¥ 
 
-    queue<int> q; 
-
-    // Å¥¿¡ 1ºÎÅÍ N±îÁöÀÇ ¼ö¸¦ »ğÀÔ
+    // íì— 1ë¶€í„° Nê¹Œì§€ì˜ ìˆ˜ë¥¼ ì‚½ì…
     for (int i = 1; i <= N; i++)
         q.push(i);
 
-    cout << "<";
+    result += "<";
 
-    //Ãâ·Â ¼ıÀÚ ºÎºĞ
+    //ì¶œë ¥ ìˆ«ì ë¶€ë¶„
 
-    while (!q.empty()) { //Å¥°¡ ºñ¾îÀÖÁö ¾ÊÀ» ¶§±îÁö ½ÇÇà
+    while (!q.empty()) { //íê°€ ë¹„ì–´ìˆì§€ ì•Šì„ ë•Œê¹Œì§€ ì‹¤í–‰
         for (int i = 0; i < K - 1; i++) {
-            // ¸Ç ¾Õ¿¡ ÀÖ´Â °ªÀ» K-1¹ø ¸¸Å­ µÚ·Î º¸³»±â
-            q.push(q.front());  // ¸Ç ¾ÕÀÇ Å¥ °ªÀ» Å¥ÀÇ ¸Ç µÚ·Î º¸³¿
-            q.pop();            // ¸Ç ¾ÕÀÇ °ªÀ» Å¥¿¡¼­ Á¦°Å
+            // ë§¨ ì•ì— ìˆëŠ” ê°’ì„ K-1ë²ˆ ë§Œí¼ ë’¤ë¡œ ë³´ë‚´ê¸°
+            q.push(q.front());  // ë§¨ ì•ì˜ í ê°’ì„ íì˜ ë§¨ ë’¤ë¡œ ë³´ëƒ„
+            q.pop();            // ë§¨ ì•ì˜ ê°’ì„ íì—ì„œ ì œê±°
         }
 
-        // K¹øÂ° °ªÀ» Ãâ·ÂÇÏ°í Å¥¿¡¼­ Á¦°Å
-        cout << q.front();
+        // Kë²ˆì§¸ ê°’ì„ ì¶œë ¥í•˜ê³  íì—ì„œ ì œê±°
+        result += to_string(q.front()); 
         q.pop();
 
-        // Å¥¿¡ ³²¾ÆÀÖ´Â ¿ä¼Ò°¡ ÀÖ´Ù¸é ½°Ç¥¿Í °ø¹é Ãâ·Â
+        // íì— ë‚¨ì•„ìˆëŠ” ìš”ì†Œê°€ ìˆë‹¤ë©´ ì‰¼í‘œì™€ ê³µë°± ì¶œë ¥
         if (!q.empty())
-            cout << ", ";
+            result += ", ";
     }
 
-    cout << ">";
+    result += ">";
 
+    return result;
+}
+//ìš”ì„¸í‘¸ìŠ¤ ìˆœì—´
+int main() {
+    int N, K; //Nëª…ì˜ ì‚¬ëŒ, ì–‘ì˜ ì •ìˆ˜ Kë²ˆì§¸ ì‚¬ëŒ
+    cin >> N >> K; 
+    
+    string josephuspermutation = josephus(N,K);
+    cout << josephuspermutation;
+    
     return 0;
 }

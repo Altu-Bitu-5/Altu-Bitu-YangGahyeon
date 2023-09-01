@@ -1,43 +1,43 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <string>
 #include <algorithm>
 
 using namespace std;
 
-string addString(string Anum, string Bnum){     //´õÇÏ´Â ÇÔ¼ö ±¸Çö
-    int i = Anum.size() - 1; // num1ÀÇ ¸¶Áö¸· ÀÚ¸® ÀÎµ¦½º
-    int j = Bnum.size() - 1; // num2ÀÇ ¸¶Áö¸· ÀÚ¸® ÀÎµ¦½º
-    int carry = 0; // ÀÚ¸® ¿Ã¸² Ã³¸® º¯¼ö, carry ÀÌ¿ë
-    string result = ""; // °á°ú¸¦ ÀúÀåÇÒ ¹®ÀÚ¿­ ÀúÀå
+string addString(string Anum, string Bnum){     //ë”í•˜ëŠ” í•¨ìˆ˜ êµ¬í˜„
+    int i = Anum.size() - 1; // num1ì˜ ë§ˆì§€ë§‰ ìžë¦¬ ì¸ë±ìŠ¤
+    int j = Bnum.size() - 1; // num2ì˜ ë§ˆì§€ë§‰ ìžë¦¬ ì¸ë±ìŠ¤
+    int carry = 0; // ìžë¦¬ ì˜¬ë¦¼ ì²˜ë¦¬ ë³€ìˆ˜, carry ì´ìš©
+    string result = ""; // ê²°ê³¼ë¥¼ ì €ìž¥í•  ë¬¸ìžì—´ ì €ìž¥
 
-    // µ¡¼ÀÀ» ÁøÇàÇÒ ¼ö ÀÖ´Â µ¿¾È ¹Ýº¹
+    // ë§ì…ˆì„ ì§„í–‰í•  ìˆ˜ ìžˆëŠ” ë™ì•ˆ ë°˜ë³µ
     while (i >= 0 || j >= 0 || carry) {
         int sum = carry;
 
-        // °¢ ¼ýÀÚÀÇ ÀÚ¸´¼ö¸¦ ´õÇÔ
+        // ê° ìˆ«ìžì˜ ìžë¦¿ìˆ˜ë¥¼ ë”í•¨
         if (i >= 0) {
-            sum += Anum[i] - '0'; // ¹®ÀÚ¸¦ Á¤¼ö·Î º¯È¯ÇÏ¿© ´õÇÔ
+            sum += Anum[i] - '0'; // ë¬¸ìžë¥¼ ì •ìˆ˜ë¡œ ë³€í™˜í•˜ì—¬ ë”í•¨
             i--;
         }
         if (j >= 0) {
-            sum += Bnum[j] - '0'; // ¹®ÀÚ¸¦ Á¤¼ö·Î º¯È¯ÇÏ¿© ´õÇÔ
+            sum += Bnum[j] - '0'; // ë¬¸ìžë¥¼ ì •ìˆ˜ë¡œ ë³€í™˜í•˜ì—¬ ë”í•¨
             j--;
         }
 
-        carry = sum / 10; // ¿Ã¸² Ã³¸®
-        result =  result + to_string(sum % 10); // °á°ú¿¡ ÇöÀç ÀÚ¸´¼ö¸¦ Ãß°¡
+        carry = sum / 10; // ì˜¬ë¦¼ ì²˜ë¦¬
+        result =  result + to_string(sum % 10); // ê²°ê³¼ì— í˜„ìž¬ ìžë¦¿ìˆ˜ë¥¼ ì¶”ê°€
     }
 
-    reverse(result.begin(), result.end()); // °á°ú¸¦ µÚÁý¾î ÁÜ, ³·Àº ÀÚ¸®¿¡¼­ºÎÅÍ ´õÇßÀ¸¹Ç·Î
+    reverse(result.begin(), result.end()); // ê²°ê³¼ë¥¼ ë’¤ì§‘ì–´ ì¤Œ, ë‚®ì€ ìžë¦¬ì—ì„œë¶€í„° ë”í–ˆìœ¼ë¯€ë¡œ
 
     return result;
 }
 
 int main() {
-    string A, B; //Å« ¼ö¸¦ ¹Þ±â À§ÇØ string ÀÌ¿ë
-    cin >> A >> B; 
+    string a, b; //í° ìˆ˜ë¥¼ ë°›ê¸° ìœ„í•´ string ì´ìš©
+    cin >> a >> b; 
 
-    string result = addString(A,B);
+    string result = addString(a,b);
     cout << result ;
 
     return 0;

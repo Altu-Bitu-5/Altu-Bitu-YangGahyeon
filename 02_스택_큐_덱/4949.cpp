@@ -1,45 +1,48 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <stack>
 #include <string>
 
 using namespace std;
 
+bool isBalanced(const string& input){
+    stack<char> s; //ê´„í˜¸ ì €ì¥í•  ìŠ¤íƒ
+
+    for (int i = 0; i < input.length(); i++) {
+        char ch = input[i];
+        if (ch == '(' || ch == '[') {
+            s.push(ch);  // ì—¬ëŠ” ê´„í˜¸ì¼ ê²½ìš° ìŠ¤íƒì— push
+         }
+          else if (ch == ')' || ch == ']') { 
+         // ë‹«ëŠ” ê´„í˜¸ì¼ ê²½ìš° ìŠ¤íƒì´ ë¹„ì–´ìˆê±°ë‚˜ ì§ì´ ë§ì§€ ì•ŠëŠ” ê²½ìš°
+             if (s.empty() || (ch == ')' && s.top() != '(') || (ch == ']' && s.top() != '[')) {
+                 return false; //false ë°˜í™˜
+                }
+                s.pop();  // ì§ì´ ë§ëŠ” ê²½ìš° ìŠ¤íƒì—ì„œ pop
+            }
+        }
+    return s.empty();
+}
+
+void Result(const string& input){
+    // ê²°ê³¼ ì¶œë ¥
+        if (isBalanced(input)){ //true ê°’ì¼ ê²½ìš°
+            cout << "yes" << endl;
+        }
+        else //false ê°’ì¼ ê²½ìš°
+            cout << "no" << endl;
+}
 int main() {
     while (true) {
         string input;
-        getline(cin, input); //ÇÑ ÁÙÀÇ ¹®ÀÚ¿­À» ÀÔ·Â¹Ş¾Æ input º¯¼ö¿¡ ÀúÀå
+        getline(cin, input); //í•œ ì¤„ì˜ ë¬¸ìì—´ì„ ì…ë ¥ë°›ì•„ input ë³€ìˆ˜ì— ì €ì¥
 
-        // ÀÔ·ÂÀÌ "."ÀÏ °æ¿ì Á¾·á
+        // ì…ë ¥ì´ "."ì¼ ê²½ìš° ì¢…ë£Œ
         if (input == ".")
             break;
 
-        stack<char> s; //°ıÈ£ ÀúÀåÇÒ ½ºÅÃ
-        bool isBalanced = true; 
+        Result(input);
 
-        for (int i = 0; i < input.length(); i++) {
-            char ch = input[i];
-            if (ch == '(' || ch == '[') {
-                s.push(ch);  // ¿©´Â °ıÈ£ÀÏ °æ¿ì ½ºÅÃ¿¡ push
-            }
-            else if (ch == ')' || ch == ']') { 
-                // ´İ´Â °ıÈ£ÀÏ °æ¿ì ½ºÅÃÀÌ ºñ¾îÀÖ°Å³ª Â¦ÀÌ ¸ÂÁö ¾Ê´Â °æ¿ì
-                if (s.empty() || (ch == ')' && s.top() != '(') || (ch == ']' && s.top() != '[')) {
-                    isBalanced = false; //false ¹İÈ¯
-                    break;
-                }
-                s.pop();  // Â¦ÀÌ ¸Â´Â °æ¿ì ½ºÅÃ¿¡¼­ pop
-            }
-        }
-
-        // ¸ğµç ÀÔ·ÂÀ» Ã³¸®ÇÑ ÈÄ¿¡µµ ½ºÅÃ¿¡ ³²Àº °ıÈ£°¡ ÀÖ´Â °æ¿ì
-        if (!s.empty())
-            isBalanced = false;
-
-        // °á°ú Ãâ·Â
-        if (isBalanced) //true °ªÀÏ °æ¿ì
-            cout << "yes" << endl;
-        else //false °ªÀÏ °æ¿ì
-            cout << "no" << endl;
+        
     }
 
     return 0;
