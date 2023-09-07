@@ -1,59 +1,59 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <vector>
 
 using namespace std;
 
 const int MAX = 1000000;
 
-// ¿¡¶óÅä½ºÅ×³×½ºÀÇ Ã¼¸¦ »ç¿ëÇÏ¿© ¼Ò¼ö¸¦ ±¸ÇÏ´Â ÇÔ¼ö
+// ì—ë¼í† ìŠ¤í…Œë„¤ìŠ¤ì˜ ì²´ë¥¼ ì‚¬ìš©í•˜ì—¬ ì†Œìˆ˜ë¥¼ êµ¬í•˜ëŠ” í•¨ìˆ˜
 vector<bool> primeSieve(int n) {
     vector<bool> isPrime(n + 1, true);
-    isPrime[0] = isPrime[1] = false; //0°ú 1Àº ¼Ò¼ö ¾Æ´Ô
+    isPrime[0] = isPrime[1] = false; //0ê³¼ 1ì€ ì†Œìˆ˜ ì•„ë‹˜
 
-    for (int p = 2; p * p <= n; p++) { // p°¡ nÀÇ Á¦°ö±Ù±îÁö ¹İº¹
+    for (int p = 2; p * p <= n; p++) { // pê°€ nì˜ ì œê³±ê·¼ê¹Œì§€ ë°˜ë³µ
         if (isPrime[p]) {
-            // pÀÇ ¹è¼ö¸¦ ¸ğµÎ ¼Ò¼ö°¡ ¾Æ´Ñ °ÍÀ¸·Î Ç¥½Ã
+            // pì˜ ë°°ìˆ˜ë¥¼ ëª¨ë‘ ì†Œìˆ˜ê°€ ì•„ë‹Œ ê²ƒìœ¼ë¡œ í‘œì‹œ
             for (int i = p * p; i <= n; i += p)
                 isPrime[i] = false;
         }
     }
 
-    return isPrime; // ¼Ò¼ö ¿©ºÎ ¹è¿­ ¹İÈ¯
+    return isPrime; // ì†Œìˆ˜ ì—¬ë¶€ ë°°ì—´ ë°˜í™˜
 }
 
-// °ñµå¹ÙÈåÀÇ ÃßÃøÀ» °ËÁõÇÏ°í Ãâ·ÂÇÏ´Â ÇÔ¼ö
+// ê³¨ë“œë°”íì˜ ì¶”ì¸¡ì„ ê²€ì¦í•˜ê³  ì¶œë ¥í•˜ëŠ” í•¨ìˆ˜
 void goldbachConjecture(int n, const vector<bool>& isPrime) {
-    bool found = false; // °ñµå¹ÙÈåÀÇ ÃßÃøÀ» ¸¸Á·ÇÏ´Â ¼Ò¼ö ½ÖÀ» Ã£¾Ò´ÂÁö ¿©ºÎ
+    bool found = false; // ê³¨ë“œë°”íì˜ ì¶”ì¸¡ì„ ë§Œì¡±í•˜ëŠ” ì†Œìˆ˜ ìŒì„ ì°¾ì•˜ëŠ”ì§€ ì—¬ë¶€
 
     for (int i = 2; i <= n / 2; i++) {
         if (isPrime[i] && isPrime[n - i]) {
-            // °ñµå¹ÙÈåÀÇ ÃßÃøÀ» ¸¸Á·ÇÏ´Â µÎ ¼Ò¼ö Ãâ·Â
+            // ê³¨ë“œë°”íì˜ ì¶”ì¸¡ì„ ë§Œì¡±í•˜ëŠ” ë‘ ì†Œìˆ˜ ì¶œë ¥
             cout << n << " = " << i << " + " << n - i << '\n';
             found = true;
-            break; // ÇÑ ¹ø Ã£À¸¸é ·çÇÁ Á¾·á
+            break; // í•œ ë²ˆ ì°¾ìœ¼ë©´ ë£¨í”„ ì¢…ë£Œ
         }
     }
 
     if (!found)
-        cout << "Goldbach's conjecture is wrong." << '\n'; // Ã£Áö ¸øÇÑ °æ¿ì ¸Ş½ÃÁö Ãâ·Â
+        cout << "Goldbach's conjecture is wrong." << '\n'; // ì°¾ì§€ ëª»í•œ ê²½ìš° ë©”ì‹œì§€ ì¶œë ¥
 }
 
 int main() {
-    //ÀÔÃâ·Â ¼Óµµ Çâ»ó
+    //ì…ì¶œë ¥ ì†ë„ í–¥ìƒ
     ios::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
 
-    // ¿¡¶óÅä½ºÅ×³×½ºÀÇ Ã¼¸¦ »ç¿ëÇÏ¿© ¼Ò¼ö ¸ñ·Ï »ı¼º
+    // ì—ë¼í† ìŠ¤í…Œë„¤ìŠ¤ì˜ ì²´ë¥¼ ì‚¬ìš©í•˜ì—¬ ì†Œìˆ˜ ëª©ë¡ ìƒì„±
     vector<bool> isPrime = primeSieve(MAX);
 
     while (true) {
         int n;
         cin >> n;
 
-        if (n == 0) //ÀÔ·Â 0ÀÏ ¶§ ÇÁ·Î±×·¥ Á¾·á
+        if (n == 0) //ì…ë ¥ 0ì¼ ë•Œ í”„ë¡œê·¸ë¨ ì¢…ë£Œ
             break;
-            // °ñµå¹ÙÈåÀÇ ÃßÃøÀ» °ËÁõÇÏ°í ÇÔ¼ö Ãâ·Â
+            // ê³¨ë“œë°”íì˜ ì¶”ì¸¡ì„ ê²€ì¦í•˜ê³  í•¨ìˆ˜ ì¶œë ¥
         goldbachConjecture(n, isPrime);
     }
 

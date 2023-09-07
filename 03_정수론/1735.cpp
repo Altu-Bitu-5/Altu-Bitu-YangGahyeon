@@ -1,8 +1,8 @@
-#include <iostream>
+ï»¿#include <iostream>
 
 using namespace std;
 
-// ÃÖ´ë °ø¾à¼ö¸¦ °è»êÇÏ´Â ÇÔ¼ö
+// ìµœëŒ€ ê³µì•½ìˆ˜ë¥¼ ê³„ì‚°í•˜ëŠ” í•¨ìˆ˜
 int GCD(int a, int b) {
     if (b == 0)
         return a;
@@ -10,22 +10,22 @@ int GCD(int a, int b) {
 }
 
 int main() {
-    // ÀÔ·Â ¹Ş±â
+    // ì…ë ¥ ë°›ê¸°
     int a, b, c, d;
     cin >> a >> b >> c >> d;
 
-    // µÎ ºĞ¼öÀÇ ÇÕ ±¸ÇÏ±â
-    int numerator = a * d + b * c; //ºĞÀÚ
-    int denominator = b * d; //ºĞ¸ğ
+    // ë‘ ë¶„ìˆ˜ì˜ í•© êµ¬í•˜ê¸°
+    int numerator = a * d + b * c; //ë¶„ì
+    int denominator = b * d; //ë¶„ëª¨
 
-    // ÃÖ´ë °ø¾à¼ö °è»ê
+    // ìµœëŒ€ ê³µì•½ìˆ˜ ê³„ì‚°
     int gcd = GCD(numerator, denominator);
 
-    // ±â¾à ºĞ¼ö·Î ¸¸µé±â
-    numerator /= gcd; //ºĞÀÚ ÃÖ´ë°ø¾à¼ö·Î ³ª´©±â
-    denominator /= gcd; //ºĞ¸ğ ÃÖ´ë°ø¾à¼ö·Î ³ª´©±â
+    // ê¸°ì•½ ë¶„ìˆ˜ë¡œ ë§Œë“¤ê¸°
+    numerator /= gcd; //ë¶„ì ìµœëŒ€ê³µì•½ìˆ˜ë¡œ ë‚˜ëˆ„ê¸°
+    denominator /= gcd; //ë¶„ëª¨ ìµœëŒ€ê³µì•½ìˆ˜ë¡œ ë‚˜ëˆ„ê¸°
 
-    // Ãâ·Â
+    // ì¶œë ¥
     cout << numerator << ' ' << denominator << endl;
 
     return 0;
