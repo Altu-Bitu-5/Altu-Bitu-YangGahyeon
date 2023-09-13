@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\03_정수론"
+    "\\03_정수론",
+    "\\04_브루트포스"
   ],
-  "SelectedNode": "\\03_정수론\\2840.cpp",
+  "SelectedNode": "\\04_브루트포스\\11723.cpp",
   "PreviewInSolutionExplorer": false
 }
