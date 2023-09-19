@@ -3,7 +3,7 @@
 
 using namespace std;
 
-typedef pair<int, char> ic;
+typedef pair<int, char> ic; // pair 타입 정의, 정수와 문자를 저장
 const int ALPHA = 26; //알파벳의 개수를 상수로 정의
 
 //index부터 시계방향으로 바퀴에 적어놓은 알파벳 출력
