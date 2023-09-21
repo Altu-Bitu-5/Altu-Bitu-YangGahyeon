@@ -1,10 +1,10 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <queue>
 
 using namespace std;
 
 int main(){
-	int n; //¹æ¹®ÇÑ È½¼ö
+	int n; //ë°©ë¬¸í•œ íšŸìˆ˜
 	cin >>n;
 
 	priority_queue<int> gift;
@@ -14,16 +14,16 @@ int main(){
 		cin >> a;
 
 		if(a ==0){
-			if (gift.empty()){ //Å¥°¡ ºñ¾îÀÖ´Ù¸é -1 Ãâ·Â
+			if (gift.empty()){ //íê°€ ë¹„ì–´ìˆë‹¤ë©´ -1 ì¶œë ¥
 				cout << -1 <<endl;
 			}
 		else{
-				cout << gift.top() <<endl; //°¡Àå Å« °¡Ä¡ÀÇ ¼±¹° Ãâ·Â
+				cout << gift.top() <<endl; //ê°€ì¥ í° ê°€ì¹˜ì˜ ì„ ë¬¼ ì¶œë ¥
 				gift.pop();
 			}
 		}
-	else { //0ÀÌ ¾Æ´Ï¶ó¸é
-		for(int j = 0; j < a; j++){ //¼±¹°À» Å¥¿¡ »ğÀÔ
+	else { //0ì´ ì•„ë‹ˆë¼ë©´
+		for(int j = 0; j < a; j++){ //ì„ ë¬¼ì„ íì— ì‚½ì…
 			int gifts;
 			cin >> gifts;
 			gift.push(gifts);

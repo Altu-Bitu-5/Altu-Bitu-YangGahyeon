@@ -1,41 +1,41 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <vector>
 #include <queue>
 
 using namespace std;
 
-int findNthBiggest(int n, vector<vector<int>>& matrix){ //n¹øÂ°·Î Å« ¼ö Ã£´Â ÇÔ¼ö
-	priority_queue<int, vector<int>, greater<int>> pq; //ÃÖ¼Ò ÈüÀ¸·Î °¡Àå ÀÛÀº °ªÀ» À¯Áö
+int findNthBiggest(int n, vector<vector<int>>& matrix){ //në²ˆì§¸ë¡œ í° ìˆ˜ ì°¾ëŠ” í•¨ìˆ˜
+	priority_queue<int, vector<int>, greater<int>> pq; //ìµœì†Œ í™ìœ¼ë¡œ ê°€ì¥ ì‘ì€ ê°’ì„ ìœ ì§€
 
 	for(int i = 0; i < n; i++){	
 		for(int j = 0; j < n; j++){
-			pq.push(matrix[i][j]); //ÀÔ·Â¹ŞÀº Çà·ÄÀÇ ¼öµéÀ» ¿ì¼±¼øÀ§ Å¥¿¡ »ğÀÔ
+			pq.push(matrix[i][j]); //ì…ë ¥ë°›ì€ í–‰ë ¬ì˜ ìˆ˜ë“¤ì„ ìš°ì„ ìˆœìœ„ íì— ì‚½ì…
 			
-			if(pq.size() > n) { //nº¸´Ù Å©´Ù¸é °¡Àå ÀÛÀº °ªÀ» Á¦°ÅÇØ n°³¸¦ À¯Áö½ÃÄÑ ÁØ´Ù.
+			if(pq.size() > n) { //në³´ë‹¤ í¬ë‹¤ë©´ ê°€ì¥ ì‘ì€ ê°’ì„ ì œê±°í•´ nê°œë¥¼ ìœ ì§€ì‹œì¼œ ì¤€ë‹¤.
 			pq.pop();
 			}
 		}
 	}
 
-	return pq.top(); // top¿¡ ³²¾ÆÀÖ´Â ¼ö´Â n¹øÂ°·Î Å« ¼ö
+	return pq.top(); // topì— ë‚¨ì•„ìˆëŠ” ìˆ˜ëŠ” në²ˆì§¸ë¡œ í° ìˆ˜
 }
 int main(){
 	ios::sync_with_stdio(false);
 	cin.tie(NULL); cout.tie(NULL);
 
-	int n; //Çà·Ä Å©±â n
+	int n; //í–‰ë ¬ í¬ê¸° n
 	cin >> n;
 
-	vector<vector<int>> matrix(n, vector<int>(n)); //n*n Å©±âÀÇ Çà·Ä »ı¼º
+	vector<vector<int>> matrix(n, vector<int>(n)); //n*n í¬ê¸°ì˜ í–‰ë ¬ ìƒì„±
 
-	for(int i=0; i < n; i++){	//n*nÀÌ¹Ç·Î n±îÁö Çà·ÄµéÀ» ÀÔ·Â ¹ŞÀ½
+	for(int i=0; i < n; i++){	//n*nì´ë¯€ë¡œ nê¹Œì§€ í–‰ë ¬ë“¤ì„ ì…ë ¥ ë°›ìŒ
 		for(int j = 0; j < n; j++){
 			cin >> matrix[i][j];
 		}
 	}
-	int result = findNthBiggest(n, matrix); //n¹øÂ° Å« ¼ö¸¦ Ã£´Â ÇÔ¼ö È£Ãâ
+	int result = findNthBiggest(n, matrix); //në²ˆì§¸ í° ìˆ˜ë¥¼ ì°¾ëŠ” í•¨ìˆ˜ í˜¸ì¶œ
 
-	cout << result; //°á°ú Ãâ·Â
+	cout << result; //ê²°ê³¼ ì¶œë ¥
 
 return 0;
 }
